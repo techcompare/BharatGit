@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>upigov / offline-pay-core | BharatGit</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        .repo-header {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .verified-badge {
+            background: rgba(0, 0, 136, 0.2);
+            color: #add8e6;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            border: 1px solid var(--accent-blue);
+            margin-left: 8px;
+        }
+        .file-list {
+            margin-top: 2rem;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .file-item {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.02);
+        }
+        .file-item:last-child { border-bottom: none; }
+        .file-item:hover { background: rgba(255, 255, 255, 0.05); }
+
+        .upi-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            padding: 2rem;
+            text-align: center;
+            display: none;
+            z-index: 100;
+        }
+        .overlay-dim {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none;
+            z-index: 99;
+        }
+        .qr-placeholder {
+            width: 200px;
+            height: 200px;
+            background: white;
+            margin: 1rem auto;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: black;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">B</div>
+                BharatGit
+            </div>
+            <div style="display: flex; gap: 20px; align-items: center;">
+                <input type="text" placeholder="Search BharatGit..." style="background: var(--card-bg); border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 6px; color: white;">
+                <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--accent-saffron);"></div>
+            </div>
+        </nav>
+
+        <div class="repo-header">
+            <div>
+                <span style="font-size: 1.2rem; color: var(--accent-saffron);">upigov</span> 
+                <span style="font-size: 1.2rem; color: var(--text-secondary);">/</span> 
+                <span style="font-size: 1.2rem; font-weight: 800;">offline-pay-core</span>
+                <span class="verified-badge">🛡️ DigiLocker Verified</span>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <button class="cta-button" style="padding: 0.5rem 1rem; background: transparent; border: 1px solid var(--border-color); color: white;">⭐ Star 8.2k</button>
+                <button class="cta-button" id="sponsorBtn" style="padding: 0.5rem 1rem; background: linear-gradient(135deg, var(--accent-saffron), var(--accent-emerald)); border: none; color: white;">💎 Sponsor via UPI</button>
+            </div>
+        </div>
+
+        <p style="margin-top: 1rem; color: var(--text-secondary);">
+            Core logic for enabling UPI transactions over 2G/Voice networks. Built for rural connectivity.
+        </p>
+
+        <div class="file-list">
+            <div class="file-item">
+                <span>📁 src/core</span>
+                <span style="color: var(--text-secondary);">Optimized 2G handshake logic</span>
+            </div>
+            <div class="file-item">
+                <span>📁 docs/regional</span>
+                <span style="color: var(--text-secondary);">Added Hindi & Tamil documentation</span>
+            </div>
+            <div class="file-item">
+                <span>📄 README.md</span>
+                <span style="color: var(--text-secondary);">Updated vision statement</span>
+            </div>
+            <div class="file-item">
+                <span>📄 Cargo.toml</span>
+                <span style="color: var(--text-secondary);">v1.4.0 release</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 3rem;">
+            <h3>Recent Discussion (translated by Bhashini AI)</h3>
+            <div class="glass-container" style="margin-top: 1rem; padding: 1.5rem;">
+                <div style="display: flex; justify-content: space-between;">
+                    <strong>@rahul_mumbai <span style="font-weight: 400; color: var(--text-secondary);"> (Marathi)</span></strong>
+                    <span style="font-size: 0.8rem; color: var(--text-secondary);">2 hours ago</span>
+                </div>
+                <p style="margin-top: 0.5rem;">"भावा, हे 2G वर व्यवस्थित काम करतंय का? मी टेस्ट केलं पण थोडा लॅग येतोय."</p>
+                <div style="margin-top: 0.5rem; padding-left: 1rem; border-left: 2px solid var(--accent-saffron);">
+                    <p style="font-size: 0.9rem; color: var(--accent-saffron);">AI Translation: "Bro, is this working fine on 2G? I tested it but noticing some lag."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- UPI Modal -->
+    <div class="overlay-dim" id="overlay"></div>
+    <div class="glass-container upi-modal" id="modal">
+        <h3>Sponsor upigov</h3>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem;">Support Digital Public Goods in India</p>
+        <div class="qr-placeholder">
+            [ UPI QR CODE ]
+        </div>
+        <p style="font-weight: 800; font-size: 1.2rem;">VPA: upi@rbi</p>
+        <button onclick="closeModal()" class="cta-button" style="margin-top: 1rem; width: 100%;">Close</button>
+    </div>
+
+    <script>
+        const btn = document.getElementById('sponsorBtn');
+        const modal = document.getElementById('modal');
+        const overlay = document.getElementById('overlay');
+
+        btn.onclick = () => {
+            modal.style.display = 'block';
+            overlay.style.display = 'block';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            overlay.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
